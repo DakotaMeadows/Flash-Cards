@@ -1,25 +1,21 @@
-require "active_record"
-require "rspec"
-require "rake"
-require "sqlite3"
-require "pathname"
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 
+require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
+require 'rubygems'
+require 'uri'
+require 'pathname'
+require 'pg'
+require 'active_record'
+require 'logger'
+require 'sinatra'
+require "sinatra/reloader" if development?
+require 'erb'
+require 'bcrypt'
 
-path_to_root_directory = File.expand_path('../../', __FILE__)
-APP_ROOT = Pathname.new(path_to_root_directory)
+APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
+APP_NAME = APP_ROOT.basename.to_s
 
-model_files = Dir[APP_ROOT.join('app', 'models', '*.rb')]
+Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
+Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
-model_files.each do |model_file|
-  filename = File.basename(model_file, ".*")
-  autoload ActiveSupport::Inflector.camelize(filename), model_file
-end
-
-ActiveRecord::Base.logger = Logger.new(STDOUT)
-
-database_config = { :adapter  =>  "sqlite3",
-                    :database => "#{APP_ROOT}/db/dogs.sqlite3" }
-
-ActiveRecord::Base.establish_connection(database_config)
-
-ActiveRecord::Base.connection
+require APP_ROOT.join('config', 'database')
