@@ -1,4 +1,4 @@
-class Schedule < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :class
+# class Schedule < ActiveRecord::Base
+# 	belongs_to :user
+# 	belongs_to :class
 end
