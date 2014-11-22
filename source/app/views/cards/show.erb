@@ -1,0 +1,21 @@
+<h1><%= @card.name %></h1>
+
+
+<div class="card_definition">
+  <%= @card.definition %>
+</div>
+
+<div class="card_hint">
+  <%= @card.hint %>
+</div>
+
+<div class="card_buttons">
+  <form action="/cards/<%= @card.name %>/edit" method="GET">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Edit">
+  </form>
+  <form action="/cards/<%= @card.name %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+</div>

@@ -6,7 +6,7 @@ post '/signup' do
     user = User.new(params[:user])
   if user.save
     session[:user_id] = user.id
-    redirect("/")
+    redirect('/')
   else
     session[:error] = user.errors.messages
     redirect('/signup')

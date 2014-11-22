@@ -1,0 +1,11 @@
+<%= display_error %>
+
+<form action="/cards/<%= @card.name %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  Word:<br>
+  <input name="card[name]" type="text" value="<%= @card.name %>"><br>
+  Definition:<br>
+  <textarea name="card[definition]"><%= @card.definition %></textarea><br>
+  <textarea name="card[hint]"><%= @card.hint%></textarea><br>
+  <input type="submit" value="Edit">
+</form>

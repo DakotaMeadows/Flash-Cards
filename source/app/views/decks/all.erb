@@ -1,0 +1,5 @@
+<ol>
+  <% @decks.each do |deck| %>
+    <li><a href="/decks/<%= deck.name %>"><%= deck.name %></a></li>
+  <% end %>
+</ol>

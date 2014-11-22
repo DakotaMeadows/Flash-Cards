@@ -1,0 +1,11 @@
+<%= display_error %>
+
+<form action="/cards" method="POST">
+  Word:<br>
+  <input type="text" name="card[name]"><br>
+  Definition:<br>
+  <textarea name="card[definition]"></textarea><br>
+  Hint:<br>
+  <textarea name="card[hint]"></textarea><br>
+  <input type="submit" value="Create">
+</form>

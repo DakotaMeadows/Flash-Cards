@@ -1,0 +1,17 @@
+<h1><%= @deck.name %></h1>
+
+
+<div class="deck_description">
+  <%= @deck.description %>
+</div>
+
+<div class="deck_buttons">
+  <form action="/decks/<%= @deck.name %>/edit" method="GET">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Edit">
+  </form>
+  <form action="/decks/<%= @deck.name %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+</div>

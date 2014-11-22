@@ -1,0 +1,10 @@
+<%= display_error %>
+
+<form action="/decks/<%= @deck.name %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  Name:<br>
+  <input name="deck[name]" type="text" value="<%= @deck.name %>"><br>
+  Description:<br>
+  <textarea name="deck[description]"><%= @deck.description %></textarea><br>
+  <input type="submit" value="Edit">
+</form>
